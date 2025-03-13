@@ -10,7 +10,14 @@ exports.signup = async (req, res) => {
     const existingUser = await User.findOne({ email });
     if (existingUser) return handleError(res, 200, "Email already exists");
 
-    const newUser = new User({ firstName, lastName, email, password });
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new User({
+      firstName,
+      lastName,
+      email,
+      password: hashedPassword,
+    });
     await newUser.save();
 
     const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {

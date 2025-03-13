@@ -6,10 +6,11 @@ const {
   updateCartItem,
   removeFromCart,
 } = require("../controllers/cartController");
+const { verifyToken } = require("../middlewares/verifyToken");
 
-router.get("/", getCart);
-router.post("/add", addToCart);
-router.put("/update", updateCartItem);
-router.delete("/remove/:productId", removeFromCart);
+router.get("/", verifyToken, getCart);
+router.post("/add", verifyToken, addToCart);
+router.put("/update", verifyToken, updateCartItem);
+router.delete("/remove/:productId", verifyToken, removeFromCart);
 
 module.exports = router;
