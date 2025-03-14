@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import serverless from "serverless-http";
 
 import authRoutes from "./routes/authRoutes.js";
 import cartRoutes from "./routes/cartRoutes.js";
@@ -12,6 +13,7 @@ import reviewRouters from "./routes/reviewRouters.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 const app = express();
+export const handler = serverless(app);
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
