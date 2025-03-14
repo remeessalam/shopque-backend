@@ -13,7 +13,6 @@ import reviewRouters from "./routes/reviewRouters.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 const app = express();
-export const handler = serverless(app);
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
@@ -44,3 +43,8 @@ mongoose
     console.log("MongoDB connected");
   })
   .catch((err) => console.error("MongoDB connection error:", err));
+
+app.use(serverless(app)); // Ensure this is the last middleware
+
+export default app;
+export const handler = serverless(app);
