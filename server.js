@@ -6,7 +6,7 @@ const authRoutes = require("./routes/authRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const productRoutes = require("./routes/productRoutes");
 const addressRoutes = require("./routes/addressRoutes");
-const wishlistRoutes = require("./routes/wishlist");
+const wishlistRoutes = require("./routes/wishlistRouter");
 const reviewRouters = require("./routes/reviewRouters");
 const errorHandler = require("./middlewares/errorHandler");
 
@@ -24,7 +24,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/addresses", addressRoutes);
-app.use("/api/wishlist", wishlistRoutes);
 app.use("/api/wishlist", wishlistRoutes);
 app.use("/api/reviews", reviewRouters);
 
