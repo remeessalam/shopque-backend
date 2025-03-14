@@ -43,7 +43,7 @@ mongoose
   })
   .catch((err) => console.error("MongoDB connection error:", err));
 
-app.use(serverless(app)); // Ensure this is the last middleware
+// app.use(serverless(app)); // Ensure this is the last middleware
 
 export default app;
-// export const handler = serverless(app);
+export const handler = serverless(app);
