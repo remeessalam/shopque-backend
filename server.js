@@ -32,10 +32,10 @@ app.use("/api/reviews", reviewRouters);
 app.use(errorHandler);
 
 // MongoDB Connection
+const PORT = process.env.PORT || 8080;
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    const PORT = process.env.PORT || 8080;
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
