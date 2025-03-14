@@ -1,4 +1,4 @@
-import Cart from "../models/Cart.js";
+import { Cart } from "../models/Cart.js";
 
 exports.getCart = async (req, res) => {
   try {
