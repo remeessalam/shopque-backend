@@ -18,7 +18,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Shopque backend is running on port 8080");
 });
-
+console.log("refresh");
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
@@ -35,7 +35,7 @@ app.use(errorHandler);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    const PORT = process.env.PORT || 5050;
+    const PORT = process.env.PORT || 8080;
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
