@@ -1,12 +1,13 @@
-const express = require("express");
-const router = express.Router();
-const {
+import express from "express";
+import {
   getCart,
   addToCart,
   updateCartItem,
   removeFromCart,
-} = require("../controllers/cartController");
-const { verifyToken } = require("../middlewares/verifyToken");
+} from "../controllers/cartController.js";
+import { verifyToken } from "../middlewares/verifyToken.js";
+
+const router = express.Router();
 
 router.get("/", verifyToken, getCart);
 router.post("/add", verifyToken, addToCart);

@@ -1,10 +1,11 @@
-const express = require("express");
-const router = express.Router();
-const {
+import express from "express";
+import {
   getWishlist,
   addToWishlist,
   removeFromWishlist,
-} = require("../controllers/wishlistController");
+} from "../controllers/wishlistController.js";
+
+const router = express.Router();
 
 router.get("/", getWishlist);
 

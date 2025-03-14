@@ -1,14 +1,15 @@
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const authRoutes = require("./routes/authRoutes");
-const cartRoutes = require("./routes/cartRoutes");
-const productRoutes = require("./routes/productRoutes");
-const addressRoutes = require("./routes/addressRoutes");
-const wishlistRoutes = require("./routes/wishlistRouter");
-const reviewRouters = require("./routes/reviewRouters");
-const errorHandler = require("./middlewares/errorHandler");
+import "dotenv/config";
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+
+import authRoutes from "./routes/authRoutes.js";
+import cartRoutes from "./routes/cartRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
+import addressRoutes from "./routes/addressRoutes.js";
+import wishlistRoutes from "./routes/wishlistRouter.js";
+import reviewRouters from "./routes/reviewRouters.js";
+import errorHandler from "./middlewares/errorHandler.js";
 
 const app = express();
 

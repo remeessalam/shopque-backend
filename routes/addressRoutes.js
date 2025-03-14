@@ -1,10 +1,11 @@
-const express = require("express");
-const {
+import express from "express";
+import {
   createAddress,
   getAllAddress,
   updateAddress,
   deleteAddress,
-} = require("../controllers/addressController");
+} from "../controllers/addressController.js";
+
 const router = express.Router();
 
 router.post("/", createAddress);

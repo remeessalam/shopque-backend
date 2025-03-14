@@ -1,4 +1,4 @@
-const Cart = require("../models/Cart");
+import Cart from "../models/Cart.js";
 
 exports.getCart = async (req, res) => {
   try {
