@@ -9,7 +9,7 @@ import productRoutes from "./routes/productRoutes.js";
 import addressRoutes from "./routes/addressRoutes.js";
 import wishlistRoutes from "./routes/wishlistRouter.js";
 import reviewRouters from "./routes/reviewRouters.js";
-import errorHandler from "./middlewares/errorHandler.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
 
 const app = express();
 
