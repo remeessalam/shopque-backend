@@ -1,6 +1,6 @@
-import { Wishlist } from "../models/WishList.js";
+import Wishlist from "../models/WishList.js";
 
-exports.getWishlist = async (req, res) => {
+export const getWishlist = async (req, res) => {
   try {
     const wishlist = await Wishlist.findOne({ user: req.user._id }).populate(
       "items.product"
@@ -13,7 +13,7 @@ exports.getWishlist = async (req, res) => {
   }
 };
 
-exports.addToWishlist = async (req, res) => {
+export const addToWishlist = async (req, res) => {
   const { productId } = req.body;
   try {
     let wishlist = await Wishlist.findOne({ user: req.user._id });
@@ -39,7 +39,7 @@ exports.addToWishlist = async (req, res) => {
   }
 };
 
-exports.removeFromWishlist = async (req, res) => {
+export const removeFromWishlist = async (req, res) => {
   const { productId } = req.params;
   try {
     let wishlist = await Wishlist.findOne({ user: req.user._id });

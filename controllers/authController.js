@@ -1,9 +1,9 @@
-import { User } from "../models/User.js";
+import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { handleError } from "../helpers/errorHelper.js";
 
-exports.signup = async (req, res) => {
+export const signup = async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;
 
@@ -32,7 +32,7 @@ exports.signup = async (req, res) => {
   }
 };
 
-exports.login = async (req, res, next) => {
+export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 

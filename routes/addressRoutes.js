@@ -13,4 +13,4 @@ router.post("/addresses/:userId", getAllAddress);
 router.post("/addresses/:id", updateAddress);
 router.post("/addresses/:id", deleteAddress);
 
-module.exports = router;
+export default router;

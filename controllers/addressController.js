@@ -1,6 +1,6 @@
 import { Address } from "../models/Address.js";
 
-exports.createAddress = async (req, res) => {
+export const createAddress = async (req, res) => {
   try {
     const { userId, streetAddress, city, state, zipCode, country } = req.body;
     const newAddress = new Address({
@@ -23,7 +23,7 @@ exports.createAddress = async (req, res) => {
   }
 };
 
-exports.getAllAddress = async (req, res) => {
+export const getAllAddress = async (req, res) => {
   try {
     const addresses = await Address.find({ userId: req.params.userId });
     res.status(200).json(addresses);
@@ -32,7 +32,7 @@ exports.getAllAddress = async (req, res) => {
   }
 };
 
-exports.updateAddress = async (req, res) => {
+export const updateAddress = async (req, res) => {
   try {
     const updatedAddress = await Address.findByIdAndUpdate(
       req.params.id,
@@ -50,7 +50,7 @@ exports.updateAddress = async (req, res) => {
   }
 };
 
-exports.deleteAddress = async (req, res) => {
+export const deleteAddress = async (req, res) => {
   try {
     const address = await Address.findByIdAndDelete(req.params.id);
     if (!address) return res.status(404).json({ message: "Address not found" });

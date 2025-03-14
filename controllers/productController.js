@@ -1,7 +1,7 @@
-import { Product } from "../models/Product.js";
+import Product from "../models/Product.js";
 
 // add a new product
-exports.addProduct = async (req, res) => {
+export const addProduct = async (req, res) => {
   try {
     console.log("reqis here");
     const product = new Product(req.body);
@@ -15,7 +15,7 @@ exports.addProduct = async (req, res) => {
 };
 
 // get all products
-exports.getProducts = async (req, res) => {
+export const getProducts = async (req, res) => {
   try {
     const products = await Product.find();
 
@@ -27,7 +27,7 @@ exports.getProducts = async (req, res) => {
 };
 
 // get single product by id
-exports.getProductById = async (req, res) => {
+export const getProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id).populate({
       path: "reviews",
@@ -46,7 +46,7 @@ exports.getProductById = async (req, res) => {
 };
 
 // update a product
-exports.updateProduct = async (req, res) => {
+export const updateProduct = async (req, res) => {
   try {
     const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -67,7 +67,7 @@ exports.updateProduct = async (req, res) => {
 };
 
 // Delete a product
-exports.deleteProduct = async (req, res) => {
+export const deleteProduct = async (req, res) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
     if (!product)

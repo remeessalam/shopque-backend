@@ -15,4 +15,4 @@ router.get("/reviews/:id", getReviewById);
 router.put("/reviews/:id", updateReview);
 router.delete("/reviews/:id", deleteReview);
 
-module.exports = router;
+export default router;

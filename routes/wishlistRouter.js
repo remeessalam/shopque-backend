@@ -13,4 +13,4 @@ router.post("/add", addToWishlist);
 
 router.delete("/remove/:productId", removeFromWishlist);
 
-module.exports = router;
+export default router;

@@ -14,4 +14,4 @@ router.post("/add", verifyToken, addToCart);
 router.put("/update", verifyToken, updateCartItem);
 router.delete("/remove/:productId", verifyToken, removeFromCart);
 
-module.exports = router;
+export default router;
