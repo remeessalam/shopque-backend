@@ -16,7 +16,7 @@ export const addProduct = async (req, res) => {
 // get all products
 export const getProducts = async (req, res) => {
   try {
-    const products = await Product.find();
+    const products = await Product.find().lean().limit(3);
 
     res.status(200).json({ success: true, products });
   } catch (error) {
