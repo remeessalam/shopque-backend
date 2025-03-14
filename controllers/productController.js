@@ -3,7 +3,6 @@ import Product from "../models/Product.js";
 // add a new product
 export const addProduct = async (req, res) => {
   try {
-    console.log("reqis here");
     const product = new Product(req.body);
     await product.save();
     res

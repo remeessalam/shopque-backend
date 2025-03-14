@@ -21,7 +21,7 @@ export const addToCart = async (req, res) => {
       cart = new Cart({
         user: req.user.userId,
         items: [{ product: productId, quantity: quantity || 1 }],
-      }).populate();
+      });
     } else {
       const itemIndex = cart.items.findIndex(
         (item) => item.product.toString() === productId

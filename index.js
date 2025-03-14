@@ -20,7 +20,6 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Shopque backend is running on port 8080");
 });
-console.log("refresh");
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
