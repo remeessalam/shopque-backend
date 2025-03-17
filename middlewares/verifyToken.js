@@ -19,7 +19,6 @@ export const verifyToken = async (req, res, next) => {
     // Find user by ID
     const user = await User.findById(decoded.userId);
 
-    console.log(decoded);
     if (!user) {
       return res.status(404).json({
         status: false,
