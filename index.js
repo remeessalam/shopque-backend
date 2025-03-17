@@ -10,6 +10,7 @@ import productRoutes from "./routes/productRoutes.js";
 import addressRoutes from "./routes/addressRoutes.js";
 import wishlistRoutes from "./routes/wishlistRouter.js";
 import reviewRouters from "./routes/reviewRouters.js";
+import orderRoutes from "./routes/orderRoutes.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 const app = express();
@@ -27,6 +28,7 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/addresses", addressRoutes);
 app.use("/api/wishlist", wishlistRoutes);
 app.use("/api/reviews", reviewRouters);
+app.use("/api/orders", orderRoutes);
 
 // Error Handling Middleware
 app.use(errorHandler);
