@@ -24,7 +24,7 @@ export const createOrder = async (req, res) => {
     const newOrder = new Order({
       user: userId,
       products,
-      totalAmount,
+      totalAmount: totalAmount,
       shippingAddress,
       paymentMethod,
       paymentStatus: "pending",
@@ -54,9 +54,9 @@ export const createOrder = async (req, res) => {
 // Verify Razorpay payment
 export const verifyPayment = async (req, res) => {
   try {
-    const { orderId, paymentId, signature } = req.body;
+    const { razorpayOrderId, paymentId, signature, orderId } = req.body;
 
-    if (!orderId || !paymentId || !signature) {
+    if (!razorpayOrderId || !paymentId || !signature) {
       return res.status(400).json({
         status: false,
         message: "Order ID, payment ID, and signature are required",
@@ -73,7 +73,7 @@ export const verifyPayment = async (req, res) => {
 
     const expectedSignature = crypto
       .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
-      .update(`${orderId}|${paymentId}`)
+      .update(`${razorpayOrderId}|${paymentId}`)
       .digest("hex");
 
     if (expectedSignature === signature) {
