@@ -88,12 +88,12 @@ export const verifyPayment = async (req, res) => {
         data: order,
       });
     } else {
-      order.paymentStatus = "failed";
-      await order.save();
-
-      return res
-        .status(400)
-        .json({ status: false, message: "Payment verification failed" });
+      // Payment verification failed: remove the created order
+      await Order.findByIdAndDelete(orderId);
+      return res.status(400).json({
+        status: false,
+        message: "Payment verification failed, order removed",
+      });
     }
   } catch (error) {
     console.error("Error verifying payment:", error);
@@ -110,8 +110,8 @@ export const getUserOrders = async (req, res) => {
     const orders = await Order.find({ user: userId })
       .populate("shippingAddress")
       .populate("products.productId")
+      .sort({ createdAt: -1 })
       .exec();
-    //   .sort({ createdAt: -1 });
     res.status(200).json({
       status: true,
       message: "Orders fetched successfully",
@@ -148,5 +148,31 @@ export const getOrderById = async (req, res) => {
     res
       .status(500)
       .json({ status: false, message: "Failed to fetch order details" });
+  }
+};
+
+//remove order
+export const cancelOrder = async (req, res) => {
+  try {
+    const { orderId } = req.params;
+    const order = await Order.findById(orderId);
+    if (!order) {
+      return res
+        .status(404)
+        .json({ status: false, message: "Order not found" });
+    }
+    // Only cancel if payment hasn't been completed
+    if (order.paymentStatus === "paid") {
+      return res
+        .status(400)
+        .json({ status: false, message: "Cannot cancel a paid order" });
+    }
+    await Order.findByIdAndDelete(orderId);
+    res
+      .status(200)
+      .json({ status: true, message: "Order cancelled successfully" });
+  } catch (error) {
+    console.error("Error cancelling order:", error);
+    res.status(500).json({ status: false, message: "Failed to cancel order" });
   }
 };

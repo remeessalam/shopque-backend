@@ -4,6 +4,7 @@ import {
   verifyPayment,
   getUserOrders,
   getOrderById,
+  cancelOrder,
 } from "../controllers/orderController.js";
 import { verifyToken } from "../middlewares/verifyToken.js";
 
@@ -20,5 +21,8 @@ router.get("/user-orders", verifyToken, getUserOrders);
 
 // Get order by ID
 router.get("/:orderId", verifyToken, getOrderById);
+
+// Get order by ID
+router.delete("/:orderId/cancel", verifyToken, cancelOrder);
 
 export default router;
