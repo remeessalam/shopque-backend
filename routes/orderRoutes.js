@@ -5,11 +5,14 @@ import {
   getUserOrders,
   getOrderById,
   cancelOrder,
+  getAllOrders,
 } from "../controllers/orderController.js";
 import { verifyToken } from "../middlewares/verifyToken.js";
 
 const router = express.Router();
 
+// Get all order
+router.get("/", getAllOrders);
 // Create a new order
 router.post("/create", verifyToken, createOrder);
 
