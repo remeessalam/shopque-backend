@@ -38,7 +38,10 @@ app.use(errorHandler);
 // MongoDB Connection
 const PORT = process.env.PORT || 8080;
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, {
+    serverSelectionTimeoutMS: 30000,
+    socketTimeoutMS: 45000,
+  })
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
