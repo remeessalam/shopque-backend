@@ -31,7 +31,7 @@ app.use("/api/wishlist", wishlistRoutes);
 app.use("/api/reviews", reviewRouters);
 app.use("/api/orders", orderRoutes);
 app.use("/api/returns", productReturnRoutes);
-
+console.log("refresh");
 // Error Handling Middleware
 app.use(errorHandler);
 
