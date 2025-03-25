@@ -6,6 +6,7 @@ import {
   getOrderById,
   cancelOrder,
   getAllOrders,
+  updateOrderStatus,
 } from "../controllers/orderController.js";
 import { verifyToken } from "../middlewares/verifyToken.js";
 
@@ -27,5 +28,8 @@ router.get("/:orderId", verifyToken, getOrderById);
 
 // Get order by ID
 router.delete("/:orderId/cancel", verifyToken, cancelOrder);
+
+// PATCH /orders/:orderId/status
+router.patch("/:orderId/status", updateOrderStatus);
 
 export default router;
